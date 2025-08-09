@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="note-detail">
+        <a href="/" class="back-btn">← بازگشت به لیست یادداشت‌ها</a>
+
+        <div class="note-card">
+            <div class="note-meta">
+                <span class="note-author">{{ note.author }}</span>
+                <span class="note-date">{{ note.created_at }}</span>
+            </div>
+            <p class="note-content">{{ note.content }}</p>
+            <div class="note-stats">
+                <span class="likes-count">{{ note.likes }} لایک</span>
+                <a href="/like/{{ note.id }}" class="like-btn">❤️ لایک کنید</a>
+            </div>
+        </div>
+
+        <div class="comments-section">
+            <h3>نظرات ({{ note.comments|length }})</h3>
+
+            <form action="/comment/{{ note.id }}" method="POST" class="comment-form">
+                <input type="text" name="commenter" placeholder="نام شما" required>
+                <textarea name="comment" placeholder="نظر شما..." required></textarea>
+                <button type="submit">ارسال نظر</button>
+            </form>
+
+            <div class="comments-list">
+                {% for comment in note.comments %}
+                <div class="comment">
+                    <div class="comment-meta">
+                        <strong>{{ comment.commenter }}</strong>
+                        <span>{{ comment.created_at }}</span>
+                    </div>
+                    <p>{{ comment.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

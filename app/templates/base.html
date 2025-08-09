@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیستم یادداشت‌ها</title>
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>یادداشت‌های عمومی</h1>
+        <nav style="text-align:center; margin-bottom:10px;">
+            <a href="{{ url_for('main.dashboard') }}" class="back-btn">داشبورد</a> |
+            <a href="{{ url_for('main.list_users') }}" class="back-btn">کاربران</a> |
+            {% if session.get('username') %}
+                <a href="{{ url_for('main.view_profile', username=session['username']) }}" class="back-btn">پروفایل من</a> |
+                <a href="{{ url_for('main.logout') }}" class="back-btn">خروج</a>
+            {% else %}
+                <a href="{{ url_for('main.login') }}" class="back-btn">ورود</a> |
+                <a href="{{ url_for('main.register') }}" class="back-btn">ثبت نام</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>© 2025 سیستم یادداشت‌ها</p>
+    </footer>
+</body>
+</html>

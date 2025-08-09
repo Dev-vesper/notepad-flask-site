@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dashboard">
+    <h2>یادداشت‌های من</h2>
+    <form method="POST" action="{{ url_for('main.add_note') }}" class="note-form glass-card">
+        <textarea name="content" placeholder="یادداشت جدید..." required></textarea>
+        <button type="submit">ذخیره</button>
+    </form>
+    <div class="notes-list">
+        {% for note in notes %}
+        <div class="note glass-card">
+            <p class="note-content">{{ note.content }}</p>
+            <div class="note-meta">
+                <span>{{ note.created_at|datetimeformat }}</span>
+                <span>{{ note.likes|length }} لایک</span>
+            </div>
+            <div class="note-actions">
+                <a href="{{ url_for('main.toggle_like', note_id=note.id) }}" class="like-btn">
+                    {% if session['username'] in note.likes %}
+                    ❤️ لایک برداری
+                    {% else %}
+                    🤍 لایک کنید
+                    {% endif %}
+                </a>
+            </div>
+            <div class="comments-section">
+                <form method="POST" action="{{ url_for('main.add_comment', note_id=note.id) }}" class="comment-form">
+                    <input type="text" name="comment" placeholder="نظر شما..." required>
+                    <button type="submit">ارسال نظر</button>
+                </form>
+                {% for comment in note.comments %}
+                <div class="comment">
+                    <strong>{{ comment.author }}</strong>
+                    <p>{{ comment.text }}</p>
+                    <small>{{ comment.created_at|datetimeformat }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>لیست کاربران</h2>
+<ul>
+  {% for user in users %}
+    <li><a href="{{ url_for('main.view_profile', username=user) }}">{{ user }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %} 

@@ -1,0 +1,238 @@
+/* Glassmorphism Darker/Eye-friendly Modern Theme with Better Spacing */
+@import url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css');
+
+body {
+    font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #10131a 0%, #1a2332 100%);
+    color: #e0e6ed;
+}
+
+header, footer {
+    background: rgba(18, 22, 34, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.25);
+    border-radius: 0 0 24px 24px;
+    margin-bottom: 32px;
+    color: #6bbcff;
+    padding: 0 0 12px 0;
+}
+
+header h1 {
+    margin: 0;
+    padding: 32px 0 12px 0;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #6bbcff;
+    text-shadow: 0 2px 8px #000a;
+}
+
+.container, main, .note, .note-card, .comment-form, .note-form, .comments-section {
+    background: rgba(24, 28, 40, 0.55);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border: 1.5px solid rgba(107, 188, 255, 0.13);
+    padding: 36px 32px;
+    margin-bottom: 36px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    border: 1.5px solid #6bbcff44;
+    border-radius: 8px;
+    background: rgba(18, 22, 34, 0.7);
+    color: #e0e6ed;
+    font-family: inherit;
+    font-size: 1.05rem;
+    transition: border 0.2s;
+}
+input:focus, textarea:focus {
+    border: 1.5px solid #6bbcff;
+    outline: none;
+    background: rgba(18, 22, 34, 0.85);
+}
+
+button {
+    background: linear-gradient(90deg, #1e3a5c 0%, #6bbcff 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #0003;
+    transition: background 0.2s, transform 0.1s;
+    margin: 8px 0;
+}
+button:hover {
+    background: linear-gradient(90deg, #6bbcff 0%, #1e3a5c 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.note, .note-card {
+    margin-bottom: 24px;
+    border: 1.5px solid #6bbcff33;
+    padding: 28px 24px;
+}
+
+.note-meta, .comment-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #6bbcffcc;
+    margin-bottom: 16px;
+    font-size: 1em;
+}
+
+.note-author, .comment-meta strong {
+    font-weight: bold;
+    color: #6bbcff;
+}
+
+.note-content {
+    margin: 18px 0;
+    line-height: 1.9;
+}
+
+.note-actions, .note-stats {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    border-top: 1px solid #6bbcff22;
+    padding-top: 18px;
+    margin-top: 18px;
+}
+
+.like-btn, .view-btn, .back-btn {
+    color: #6bbcff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+    margin: 0 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+.like-btn:hover, .view-btn:hover, .back-btn:hover {
+    color: #fff;
+    background: rgba(107, 188, 255, 0.12);
+}
+.likes-count {
+    font-weight: bold;
+    color: #6bbcff;
+}
+
+.comments-section {
+    margin-top: 36px;
+    padding: 28px 24px;
+}
+
+.comment {
+    padding: 18px 0;
+    border-bottom: 1px solid #6bbcff22;
+}
+.comment:last-child {
+    border-bottom: none;
+}
+.comment p {
+    margin: 12px 0 7px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 28px 0 16px 0;
+    color: #6bbcff;
+    font-size: 1em;
+    background: rgba(18, 22, 34, 0.85);
+    border-radius: 24px 24px 0 0;
+}
+
+.auth-card, .glass-card {
+    background: rgba(24, 28, 40, 0.65);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.22);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    border: 1.5px solid rgba(107, 188, 255, 0.18);
+    padding: 40px 36px 32px 36px;
+    margin: 0 auto 36px auto;
+    max-width: 420px;
+    width: 100%;
+    transition: box-shadow 0.2s;
+}
+.auth-card h2, .glass-card h2 {
+    text-align: center;
+    color: #6bbcff;
+    margin-bottom: 32px;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.register-link {
+    text-align: center;
+    margin-top: 24px;
+    color: #b0c4d4;
+    font-size: 1rem;
+}
+.register-link a {
+    color: #6bbcff;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.register-link a:hover {
+    color: #fff;
+}
+.dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+}
+@media (max-width: 600px) {
+    .auth-card, .glass-card {
+        padding: 18px 6px 18px 6px;
+        max-width: 98vw;
+    }
+    .dashboard {
+        padding: 0 2px;
+    }
+    .notes-list {
+        gap: 16px;
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 900px) {
+    .container, main, .note, .note-card, .comment-form, .note-form, .comments-section {
+        padding: 18px 8px;
+        margin-bottom: 18px;
+    }
+    header h1 {
+        font-size: 1.2rem;
+        padding: 18px 0 8px 0;
+    }
+    button {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="note-form">
+        <h2>یادداشت جدید</h2>
+        <form action="/notes" method="POST">
+            <input type="text" name="author" placeholder="نام شما" required>
+            <textarea name="content" placeholder="متن یادداشت..." required></textarea>
+            <button type="submit">ارسال یادداشت</button>
+        </form>
+    </div>
+
+    <div class="notes-list">
+        <h2>یادداشت‌های اخیر</h2>
+        {% for note in notes %}
+        <div class="note">
+            <div class="note-meta">
+                <span class="note-author">{{ note.author }}</span>
+                <span class="note-date">{{ note.created_at }}</span>
+            </div>
+            <p class="note-content">{{ note.content }}</p>
+            <div class="note-actions">
+                <span class="likes-count">{{ note.likes }} لایک</span>
+                <a href="/like/{{ note.id }}" class="like-btn">❤️ لایک</a>
+                <a href="/note/{{ note.id }}" class="view-btn">مشاهده جزئیات</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

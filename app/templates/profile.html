@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>پروفایل {{ username }}</h2>
+<p>تاریخ عضویت: {{ profile.joined_at|datetimeformat }}</p>
+<p>تعداد لایک‌ها: {{ profile.profile_likes|length }}</p>
+{% if is_self %}
+  <form method="post" action="{{ url_for('main.delete_account') }}" onsubmit="return confirm('آیا مطمئن هستید که می‌خواهید اکانت خود را حذف کنید؟ این عملیات غیرقابل بازگشت است.');">
+    <button type="submit" style="background:#a00;color:#fff;margin-bottom:16px;">حذف اکانت</button>
+  </form>
+{% endif %}
+{% if not is_self and current_user %}
+  <form method="post" action="{{ url_for('main.like_profile', username=username) }}">
+    {% if current_user in profile.profile_likes %}
+      <button type="submit">لغو لایک</button>
+    {% else %}
+      <button type="submit">لایک</button>
+    {% endif %}
+  </form>
+{% endif %}
+<hr>
+<h3>پست‌ها (یادداشت‌ها)</h3>
+<ul>
+  {% for note in notes %}
+    <li>{{ note.content }} <span style="font-size:small">({{ note.created_at|datetimeformat('%Y-%m-%d %H:%M') }})</span></li>
+  {% else %}
+    <li>پستی ثبت نشده است.</li>
+  {% endfor %}
+</ul>
+<hr>
+<h3>نظرات پروفایل</h3>
+<ul>
+  {% for comment in profile.profile_comments %}
+    <li><b>{{ comment.author }}</b>: {{ comment.text }} <span style="font-size:small">({{ comment.created_at|datetimeformat('%Y-%m-%d %H:%M') }})</span></li>
+  {% else %}
+    <li>نظری ثبت نشده است.</li>
+  {% endfor %}
+</ul>
+{% if current_user %}
+  <form method="post" action="{{ url_for('main.comment_profile', username=username) }}">
+    <textarea name="comment" rows="2" cols="40" required></textarea><br>
+    <button type="submit">ارسال نظر</button>
+  </form>
+{% endif %}
+{% endblock %} 
